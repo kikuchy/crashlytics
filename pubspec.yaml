@@ -1,8 +1,8 @@
 name: crashlytics
 description: Flutter plugin for (Fabric) Crashlytics on Android and iOS.
 version: 0.0.1
-author:
-homepage:
+author: kikuchy <kikuchy.h@gmail.com>
+homepage: https://github.com/kikuchy/crashlytics
 
 dependencies:
   flutter:
@@ -51,3 +51,6 @@ flutter:
   #
   # For details regarding fonts in packages, see
   # https://flutter.io/custom-fonts/#from-packages
+
+environment:
+    sdk: ">=1.19.0 <2.0.0"
