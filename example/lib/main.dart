@@ -20,7 +20,7 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-    throw Exception("Example exception!");
+    throw new Exception("Example exception!");
     initPlatformState();
   }
 

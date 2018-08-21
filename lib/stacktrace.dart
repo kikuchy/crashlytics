@@ -1,5 +1,5 @@
 List<Map<String, String>> parseStackTrace(StackTrace stackTrace) {
-  final linePattern = RegExp(r"#(\d+)\s+(.+?)\s\(([^:]+:[^:]+):(\d+):(\d+)\)");
+  final linePattern = new RegExp(r"#(\d+)\s+(.+?)\s\(([^:]+:[^:]+):(\d+):(\d+)\)");
   return stackTrace.toString().trim().split("\n").map((line) {
     if (line == "<asynchronous suspension>") {
       return {
@@ -8,7 +8,7 @@ List<Map<String, String>> parseStackTrace(StackTrace stackTrace) {
     } else {
       final match = linePattern.firstMatch(line);
       if (match == null) {
-        throw FormatException("Unknown format of StackTrace. : $line");
+        throw new FormatException("Unknown format of StackTrace. : $line");
       }
       return <String, String>{
         "description": match.group(1),

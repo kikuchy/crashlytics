@@ -1,32 +1,14 @@
-import 'package:test/test.dart';
 import 'package:crashlytics/stacktrace.dart';
+import 'package:test/test.dart';
 
 void main() {
   test("stackTraceParser can parse dart stack trace", () {
-    final actual = StackTrace.fromString(
+    final source = new StackTrace.fromString(
         "#0      StandardMethodCodec.decodeEnvelope (package:flutter/src/services/message_codecs.dart:547:7)\n"
         "#1      MethodChannel.invokeMethod (package:flutter/src/services/platform_channel.dart:279:18)\n"
         "<asynchronous suspension>\n"
         "#19     _startIsolate.<anonymous closure> (dart:isolate/runtime/libisolate_patch.dart:279:19)\n"
         "#20     _RawReceivePortImpl._handleMessage (dart:isolate/runtime/libisolate_patch.dart:165:12)\n"
-//        "#2      Crashlytics.sendError (package:crashlytics/crashlytics.dart:15:14)\n"
-//        "<asynchronous suspension>\n"
-//        "#3      main.<anonymous closure> (file:///Users/kikuchy/dev/diverse/crashlytics/example/lib/main.dart:9:17)\n"
-//        "#4      FlutterError.reportError (package:flutter/src/foundation/assertions.dart:408:14)\n"
-//        "#5      _debugReportException (package:flutter/src/widgets/framework.dart:4794:16)\n"
-//        "#6      ComponentElement.performRebuild (package:flutter/src/widgets/framework.dart:3645:35)\n"
-//        "#7      Element.rebuild (package:flutter/src/widgets/framework.dart:3495:5)\n"
-//        "#8      BuildOwner.buildScope (package:flutter/src/widgets/framework.dart:2242:33)\n"
-//        "#9      _WidgetsFlutterBinding&BindingBase&GestureBinding&ServicesBinding&SchedulerBinding&PaintingBinding&RendererBinding&WidgetsBinding.drawFrame (package:flutter/src/widgets/binding.dart:626:20)\n"
-//        "#10     _WidgetsFlutterBinding&BindingBase&GestureBinding&ServicesBinding&SchedulerBinding&PaintingBinding&RendererBinding._handlePersistentFrameCallback (package:flutter/src/rendering/binding.dart:208:5)\n"
-//        "#11     _WidgetsFlutterBinding&BindingBase&GestureBinding&ServicesBinding&SchedulerBinding._invokeFrameCallback (package:flutter/src/scheduler/binding.dart:990:15)\n"
-//        "#12     _WidgetsFlutterBinding&BindingBase&GestureBinding&ServicesBinding&SchedulerBinding.handleDrawFrame (package:flutter/src/scheduler/binding.dart:930:9)\n"
-//        "#13     _WidgetsFlutterBinding&BindingBase&GestureBinding&ServicesBinding&SchedulerBinding._handleDrawFrame (package:flutter/src/scheduler/binding.dart:842:5)\n"
-//        "#14     _rootRun (dart:async/zone.dart:1126:13)\n"
-//        "#15     _CustomZone.run (dart:async/zone.dart:1023:19)\n"
-//        "#16     _CustomZone.runGuarded (dart:async/zone.dart:925:7)\n"
-//        "#17     _invoke (dart:ui/hooks.dart:122:10)\n"
-//        "#18     _drawFrame (dart:ui/hooks.dart:109:3)"
     );
     final exp = [
       {
@@ -57,10 +39,6 @@ void main() {
         "positionInLine"  : "12",
       }
     ];
-    expect(parseStackTrace(actual), exp);
-  });
-
-  test("trim can erase newline", () {
-    expect("hoge\nfuga\n".trim().split("\n"), ["hoge", "fuga"]);
+    expect(parseStackTrace(source), exp);
   });
 }
